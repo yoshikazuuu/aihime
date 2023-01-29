@@ -23,8 +23,8 @@ body {
 
 .center {
   display: flex;
-  align-items: center; /* center vertically */
-  justify-content: center; /* center horizontally */
+  align-items: center; 
+  justify-content: center; 
   height: 100%;
   width: 100%;
   position: absolute;
@@ -84,15 +84,62 @@ span .fa {
 
 @keyframes fadeIn {
   from {
-    opacity: 0; /* start with the element invisible */
+    opacity: 0; 
     transform: scale(0.8);
   }
   to {
-    opacity: 1; /* end with the element fully visible */
+    opacity: 1;
     transform: scale(1);
   }
 }
 
 .fade-in {
-  animation: fadeIn 1s ease-in-out; /* animate for 1 second, with a ease-in-out timing function */
+  animation: fadeIn 1s ease-in-out; 
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.link {
+  color: rgb(128, 73, 0);
+  background-color: transparent;
+  text-decoration: none;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
 }
