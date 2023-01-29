@@ -1,0 +1,98 @@
+body {
+  background: rgb(221,221,220);
+  background: radial-gradient(circle, rgba(221,221,220,1) 0%, rgba(146,144,147,1) 100%);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.text{
+  padding: 20px;  
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+.small-text{
+  font-size: 17px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: lighter;
+  color: rgb(0, 0, 0);
+}
+
+.center {
+  display: flex;
+  align-items: center; /* center vertically */
+  justify-content: center; /* center horizontally */
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+span {
+  color: #666;
+  font-size: 12px;
+  display: block;
+  position: absolute;
+  bottom: 10px;
+  position: absolute;
+  width: 90%;
+  left: 50%;
+  top: 95%;
+  bottom: auto;
+  right: auto;
+  transform: translateX(-50%) translateY(-50%);
+  text-align: center;
+}
+
+span a {
+  color: #000000;
+  text-decoration: none;
+}
+
+span .fa {
+  color: #E90606;
+  margin: 0 3px;
+  font-size: 10px;
+  animation: pound 0.35s infinite alternate;
+  -webkit-animation: pound 0.35s infinite alternate;
+}
+
+@-webkit-keyframes pound {
+  to {
+    transform: scale(1.1);
+  }
+}
+@keyframes pound {
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.vertical-heading-2 {
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* start with the element invisible */
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1; /* end with the element fully visible */
+    transform: scale(1);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out; /* animate for 1 second, with a ease-in-out timing function */
+}
