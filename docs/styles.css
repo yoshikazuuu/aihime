@@ -7,15 +7,15 @@ body {
 }
 
 .text{
-  padding: 20px;  
-  font-size: 20px;
+  padding: 0.5rem;  
+  font-size: 2rem;
   font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
   color: rgb(0, 0, 0);
 }
 
 .small-text{
-  font-size: 17px;
+  font-size: 1rem;
   font-family: 'Times New Roman', Times, serif;
   font-weight: lighter;
   color: rgb(0, 0, 0);
@@ -36,7 +36,7 @@ body {
 
 span {
   color: #666;
-  font-size: 12px;
+  font-size: 0.8rem;
   display: block;
   position: absolute;
   bottom: 10px;
@@ -58,7 +58,7 @@ span a {
 span .fa {
   color: #E90606;
   margin: 0 3px;
-  font-size: 10px;
+  font-size: 0.8rem;
   animation: pound 0.35s infinite alternate;
   -webkit-animation: pound 0.35s infinite alternate;
 }
