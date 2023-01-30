@@ -1,9 +1,21 @@
+html {
+  overflow: hidden;
+}
+  
 body {
   background: rgb(221,221,220);
   background: radial-gradient(circle, rgba(221,221,220,1) 0%, rgba(146,144,147,1) 100%);
   font-family: 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+canvas {
+  writing-mode: vertical-lr;
+}
+
+#c {
+  filter: blur(1.4px);
 }
 
 .text{
@@ -39,13 +51,8 @@ span {
   font-size: 0.8rem;
   display: block;
   position: absolute;
-  bottom: 10px;
-  position: absolute;
-  width: 90%;
   left: 50%;
-  top: 95%;
-  bottom: auto;
-  right: auto;
+  bottom: 0%;
   transform: translateX(-50%) translateY(-50%);
   text-align: center;
 }
