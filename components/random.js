@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const links = [
@@ -11,7 +12,7 @@ const links = [
 export default function RandomLinks({ num }) {
   const [randomLinks, setRandomLinks] = useState([]);
 
-  useEffect(() => {
+  const refreshRandomLinks = () => {
     let tempLinks = [];
 
     for (let i = 0; i < num; i++) {
@@ -20,20 +21,25 @@ export default function RandomLinks({ num }) {
     }
 
     setRandomLinks(tempLinks);
+  };
+
+  useEffect(() => {
+    refreshRandomLinks();
   }, [num]);
 
   return (
     <ul>
       {randomLinks.map((link, index) => (
         <li key={index}>
-          <a href="/random">
+          <Link href="/random">
             <img
               id="the_pic"
               className="center fit"
               src={`${link}`}
               alt="wahahahahahaha!"
+              onClick={refreshRandomLinks}
             />
-          </a>
+          </Link>
         </li>
       ))}
     </ul>
