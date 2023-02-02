@@ -32,7 +32,8 @@ yarn-error.log*
 .vercel
 
 #bruh
-../.vscode
+.vscode
 .vscode
 ../gh-pages
 ../gh-pages.pub
+/dist
