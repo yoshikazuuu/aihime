@@ -1,14 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import randomLink from "../components/random";
-import useWordCloud from "../components/text";
-import useSWR from "swr";
+import Album from "@/components/song";
+import useWordCloud from "@/components/text";
+import useSWR from 'swr';
 
 export default function Home() {
-  const fetcher = (url) => fetch(url).then((r) => r.json());
-  const { data } = useSWR("/api/spotify", fetcher);
-
   useWordCloud();
   return (
     <>
@@ -26,6 +23,7 @@ export default function Home() {
         />
       </Head>
 
+
       <div>
         <canvas id="c"></canvas>
 
@@ -40,38 +38,9 @@ export default function Home() {
           <br />
           Made with ❤️ for You 🎀
         </span>
-        <a
-          className="a"
-          href={
-            data?.isPlaying
-              ? data.songUrl
-              : "/random"
-          }
-        >
-          <section className="content_section">
-            <div className="content_box">
-              <img
-                className="right_img"
-                src={
-                  data?.isPlaying
-                    ? data?.albumImageUrl
-                    : "https://media.tenor.com/AHISycRzhy0AAAAi/pjsekai-project-sekai.gif"
-                }
-                alt={data?.isPlaying ? data?.album : "mijuki"}
-              ></img>
-              <div className="title_text">
-                <p className="info_title">
-                  {data?.isPlaying
-                    ? data.title
-                    : "Well i'm not listening anything atm."}
-                </p>
-                <p className="info_sub">
-                  {data?.isPlaying ? data.artist : "hi! (pwease click me!)"}
-                </p>
-              </div>
-            </div>
-          </section>
-        </a>
+
+        <Album />
+
       </div>
     </>
   );

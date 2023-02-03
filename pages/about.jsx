@@ -2,9 +2,13 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import useWordCloud from "../components/text";
+import Album from "@/components/song"
 import CopyLink from "../components/functions";
+import useSWR from 'swr';
 
 export default function About() {
+  const fetcher = (url) => fetch(url).then((r) => r.json());
+  const { data } = useSWR("/api/spotify", fetcher);
   useWordCloud();
   return (
     <>
@@ -62,6 +66,8 @@ export default function About() {
           <br />
           Made with ❤️ for You 🎀
         </span>
+
+        <Album />
       </div>
     </>
   );

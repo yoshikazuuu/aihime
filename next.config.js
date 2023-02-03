@@ -6,7 +6,6 @@ module.exports = {
    * Tell Next.js where the `public` folder is.
    * Replace `nextjs-github-pages` with your Github repo project name.
    */
-  distDir: "dist",
 
   assetPrefix: isProd ? "/aihime/" : "",
   /**

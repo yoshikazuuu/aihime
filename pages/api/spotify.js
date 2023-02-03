@@ -9,6 +9,7 @@ const {
 const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
+const LYRICS_ENDPOINT = `https://spotify-lyric-api.herokuapp.com/?url=`;
 
 const getAccessToken = async () => {
   const response = await fetch(TOKEN_ENDPOINT, {
@@ -26,6 +27,17 @@ const getAccessToken = async () => {
   return response.json();
 };
 
+const getLyrics = async (url) => {
+  const response = await fetch(
+    LYRICS_ENDPOINT +
+      new URLSearchParams({
+        url: url,
+      })
+  );
+
+  return response.json();
+};
+
 export const getNowPlaying = async () => {
   const { access_token } = await getAccessToken();
 
@@ -36,6 +48,7 @@ export const getNowPlaying = async () => {
   });
 };
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (_, res) => {
   const response = await getNowPlaying();
 
@@ -51,6 +64,16 @@ export default async (_, res) => {
   const albumImageUrl = song.item.album.images[0].url;
   const songUrl = song.item.external_urls.spotify;
 
+  const lyricsAPI = await getLyrics(songUrl);
+  let lyric = "";
+  if (lyricsAPI.error) {
+    lyric = "";
+  } else {
+    for (let i = 0; i < lyricsAPI.lines.length; i++) {
+      lyric += lyricsAPI.lines[i].words + " ";
+    }
+  }
+
   return res.status(200).json({
     album,
     albumImageUrl,
@@ -58,5 +81,6 @@ export default async (_, res) => {
     isPlaying,
     songUrl,
     title,
+    lyric,
   });
 };
