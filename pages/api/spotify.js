@@ -8,8 +8,8 @@ const {
 
 const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
+const NOW_DEVICE_ENDPOINT = `https://api.spotify.com/v1/me/player/devices`;
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
-const LYRICS_ENDPOINT = `https://spotify-lyric-api.herokuapp.com/?url=`;
 
 const getAccessToken = async () => {
   const response = await fetch(TOKEN_ENDPOINT, {
@@ -27,17 +27,6 @@ const getAccessToken = async () => {
   return response.json();
 };
 
-const getLyrics = async (url) => {
-  const response = await fetch(
-    LYRICS_ENDPOINT +
-      new URLSearchParams({
-        url: url,
-      })
-  );
-
-  return response.json();
-};
-
 export const getNowPlaying = async () => {
   const { access_token } = await getAccessToken();
 
@@ -48,39 +37,56 @@ export const getNowPlaying = async () => {
   });
 };
 
+export const getNowDevice = async () => {
+  const { access_token } = await getAccessToken();
+
+  return fetch(NOW_DEVICE_ENDPOINT, {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  });
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (_, res) => {
   const response = await getNowPlaying();
+  const response_device = await getNowDevice();
 
   if (response.status === 204 || response.status > 400) {
     return res.status(200).json({ isPlaying: false });
   }
 
   const song = await response.json();
+  const bruh = await response_device.json();
+  console.log(bruh);
   const isPlaying = song.is_playing;
   const title = song.item.name;
   const artist = song.item.artists.map((_artist) => _artist.name).join(", ");
   const album = song.item.album.name;
   const albumImageUrl = song.item.album.images[0].url;
   const songUrl = song.item.external_urls.spotify;
+  const progress = song.progress_ms;
+  const duration = song.item.duration_ms;
 
-  const lyricsAPI = await getLyrics(songUrl);
-  let lyric = "";
-  if (lyricsAPI.error) {
-    lyric = "";
-  } else {
-    for (let i = 0; i < lyricsAPI.lines.length; i++) {
-      lyric += lyricsAPI.lines[i].words + " ";
+  let active_device = null;
+  let device_type = null;
+  for (let i = 0; i < bruh.devices.length; i++) {
+    if (bruh.devices[i].is_active) {
+      active_device = bruh.devices[i].name;
+      device_type = bruh.devices[i].type;
     }
   }
 
   return res.status(200).json({
+    isPlaying,
     album,
     albumImageUrl,
     artist,
-    isPlaying,
+    progress,
+    duration,
     songUrl,
     title,
-    lyric,
+    active_device,
+    device_type,
   });
 };

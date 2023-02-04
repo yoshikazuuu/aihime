@@ -25,7 +25,7 @@ export default function RandomLinks({ num }) {
 
   useEffect(() => {
     refreshRandomLinks();
-  }, [num]);
+  }, []);
 
   return (
     <ul>

@@ -1,5 +1,6 @@
 html {
-  overflow: hidden;
+  /* position: fixed; */
+  overflow-x: hidden;
 }
 
 body {
@@ -11,6 +12,8 @@ body {
 
 canvas {
   writing-mode: vertical-lr;
+  position: fixed;
+  ;
 }
 
 #c {
@@ -20,14 +23,14 @@ canvas {
 .text {
   padding: 0.5rem;
   font-size: 2rem;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Times New Roman', serif;
   font-weight: bold;
   color: rgb(0, 0, 0);
 }
 
 .small-text {
   font-size: 1rem;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Times New Roman', serif;
   font-weight: lighter;
   color: rgb(0, 0, 0);
 }
@@ -189,8 +192,10 @@ span .fa {
 }
 
 .content_box {
-  padding: 10px;
+  padding-bottom: 10px;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .content_section {
@@ -213,7 +218,7 @@ p {
 }
 
 .a:visited {
-  color: #13e65c;
+  color: #000000;
   background-color: transparent;
   text-decoration: none;
 }
@@ -225,7 +230,50 @@ p {
 }
 
 .a:active {
-  color: yellow;
+  color: rgb(0, 0, 0);
   background-color: transparent;
   text-decoration: underline;
+}
+
+#seekbar-bg {
+  border-radius: 50px;
+  height: 6px;
+  width: 200px;
+  background-color: rgba(255, 255, 255, 0.50) !important;
+  justify-self: center;
+
+  font-size: 0.7em;
+  font-weight: bold;
+  color: #555;
+}
+
+#section-album {
+  display: grid;
+  grid-template-columns: 200px;
+  grid-template-rows: repeat(2, 1);
+}
+
+#seekbar-now {
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.90) !important;
+  height: 6px;
+  transition: linear width 1s;
+}
+
+#time-class {
+  margin-top: 5px;
+  float: right;
+}
+
+#device {
+  margin-top: 5px;
+  float: left;
+}
+
+.material-icons {
+  margin-top: 5px;
+  margin-right: 5px;
+  float: left;
+  vertical-align: middle;
+  font-size: 1.3em;
 }

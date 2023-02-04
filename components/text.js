@@ -3,7 +3,7 @@ import useSWR from "swr";
 
 const useWordCloud = () => {
   const fetcher = (url) => fetch(url).then((r) => r.json());
-  const { data } = useSWR("/api/spotify", fetcher, {
+  const { data } = useSWR("/api/lyrics", fetcher, {
     refreshInterval: 1000,
     refreshWhenHidden: false,
     revalidateOnFocus: true,
@@ -29,16 +29,12 @@ const useWordCloud = () => {
         w = canvas.width,
         h = canvas.height;
 
-      c.strokeStyle = "red";
-      c.fillStyle = "white";
-      c.lineWidth = 5;
-
       // constructor
       const Word = function (key) {
         this.text = key;
         this.x = Math.random() * w;
         this.y = Math.random() * h;
-        this.font = 40 / (key.length * 0.5) + "px MS Gothic";
+        this.font = 40 / (key.length * 0.5) + "px";
         this.speed = 20 / key.length;
       };
       Object.keys(words).forEach(function (key) {
