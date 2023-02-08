@@ -65,9 +65,8 @@ export default function About() {
           <br />
           Made with ❤️ for You 🎀
         </span>
-
-        <Album />
       </div>
+      <Album />
     </>
   );
 }
