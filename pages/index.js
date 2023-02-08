@@ -3,8 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import Album from "@/components/song";
 import useWordCloud from "@/components/text";
+import useAvgColor from "@/components/bgcolor"
 
 export default function Home() {
+  useAvgColor();
   useWordCloud();
   return (
     <>
@@ -25,7 +27,7 @@ export default function Home() {
 
 
       <div>
-        <canvas id="c"></canvas>
+        <canvas id="c" className="fade-in"></canvas>
 
         <div className="vertical-heading-2 center fade-in">
           <a style={{ fontSize: "5rem" }}>生きろ。</a>

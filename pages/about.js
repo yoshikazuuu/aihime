@@ -24,7 +24,7 @@ export default function About() {
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
       </Head>
       <div>
-        <canvas id="c"></canvas>
+        <canvas id="c" className="fade-in"></canvas>
         <div className="center fade-in">
           <div className="text">
             Aihime (
@@ -58,9 +58,9 @@ export default function About() {
           </div>
         </div>
         <span>
-          <a style={{ lineHeight: "30px" }} href="about.html">
-            <Link href="/">Home</Link>
-          </a>
+          <Link style={{ lineHeight: "30px" }} href="/">
+            Home
+          </Link>
           <br />
           Made with ❤️ for You 🎀
         </span>

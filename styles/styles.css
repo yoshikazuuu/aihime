@@ -1,10 +1,14 @@
+:root {
+  --primary-color: rgb(255, 255, 255);
+}
+
 html {
   /* position: fixed; */
   overflow-x: hidden;
 }
 
 body {
-  background: radial-gradient(circle, rgba(221, 221, 220, 1) 0%, rgba(146, 144, 147, 1) 100%);
+  background: radial-gradient(circle, rgba(221, 221, 220) 0%, var(--primary-color) 100%);
   font-family: 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -13,7 +17,6 @@ body {
 canvas {
   writing-mode: vertical-lr;
   position: fixed;
-  ;
 }
 
 #c {

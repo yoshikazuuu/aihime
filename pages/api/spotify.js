@@ -1,5 +1,3 @@
-import querystring from "querystring";
-
 const {
   SPOTIFY_CLIENT_ID: client_id,
   SPOTIFY_CLIENT_SECRET: client_secret,
@@ -18,10 +16,10 @@ const getAccessToken = async () => {
       Authorization: `Basic ${basic}`,
       "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: querystring.stringify({
+    body: new URLSearchParams({
       grant_type: "refresh_token",
       refresh_token,
-    }),
+    }).toString(),
   });
 
   return response.json();
@@ -58,7 +56,7 @@ export default async (_, res) => {
 
   const song = await response.json();
   const bruh = await response_device.json();
-  console.log(bruh);
+
   const isPlaying = song.is_playing;
   const title = song.item.name;
   const artist = song.item.artists.map((_artist) => _artist.name).join(", ");

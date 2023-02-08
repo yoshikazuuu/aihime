@@ -47,7 +47,7 @@ function Repo({ initialData }) {
   });
 
   return (
-    <div>
+    <div className="fade-in">
       <a className="a" href={data?.isPlaying ? data.songUrl : "/random"}>
         <section id="section-album" className="content_section">
           <div className="content_box">
