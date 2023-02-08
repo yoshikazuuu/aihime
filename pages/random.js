@@ -1,6 +1,6 @@
-import RandomLinks from "@/components/random";
 import Head from "next/head";
 import Image from "next/image";
+import RandomLinks from "@/components/random";
 
 export default function Random() {
   return (

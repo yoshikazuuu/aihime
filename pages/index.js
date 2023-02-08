@@ -23,6 +23,7 @@ export default function Home() {
       <div className="canvas-container">
         <canvas id="c"></canvas>
       </div>
+
       <div>
         <div className="vertical-heading-2 center fade-in">
           <a style={{ fontSize: "5rem" }}>生きろ。</a>

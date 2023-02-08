@@ -1,6 +1,5 @@
 import useSWR, { SWRConfig } from "swr";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 const API = "/api/spotify";

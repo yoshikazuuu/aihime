@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const CopyLink = ({ href }) => {
-  const [copySuccess, setCopySuccess] = useState("");
+  const [setCopySuccess] = useState("");
 
   const handleCopy = async (event) => {
     event.preventDefault();

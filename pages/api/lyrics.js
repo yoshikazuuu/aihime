@@ -1,4 +1,3 @@
-import { Song } from "@/components/song";
 import axios from "axios";
 
 const LYRICS_ENDPOINT = `https://spotify-lyric-api.herokuapp.com/?url=`;
@@ -25,7 +24,7 @@ export default async (_, res) => {
 
   let lyric = "";
   if (lyricsAPI === null) {
-    return res.status(200).json({ isPlaying: false });
+    return res.status(200).json({ isPlaying: false, lyric: "" });
   } else {
     for (let i = 0; i < lyricsAPI.lines.length; i++) {
       lyric += lyricsAPI.lines[i].words + " ";

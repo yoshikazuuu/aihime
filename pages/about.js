@@ -2,10 +2,12 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import useWordCloud from "../components/text";
+import useAvgColor from "@/components/bgcolor";
 import Album from "@/components/song";
 import CopyLink from "../components/functions";
 
 export default function About() {
+  useAvgColor();
   useWordCloud();
   return (
     <>
@@ -18,8 +20,12 @@ export default function About() {
           content="width=device-width, maximum-scale=1.0, user-scalable=yes"
         />
       </Head>
+
+      <div className="canvas-container">
+        <canvas id="c"></canvas>
+      </div>
+
       <div>
-        <canvas id="c" className="fade-in"></canvas>
         <div className="center fade-in">
           <div className="text">
             Aihime (
