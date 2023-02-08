@@ -47,17 +47,13 @@ function Repo({ initialData }) {
   });
 
   return (
-    <div className="fade-in">
+    <div className="fade-in" id="div-album">
       <a className="a" href={data?.isPlaying ? data.songUrl : "/random"}>
         <section id="section-album" className="content_section">
           <div className="content_box">
             <Image
               className="right_img"
-              src={
-                data?.isPlaying
-                  ? data?.albumImageUrl
-                  : "https://media.tenor.com/AHISycRzhy0AAAAi/pjsekai-project-sekai.gif"
-              }
+              src={data?.isPlaying ? data?.albumImageUrl : "images/mijuki.gif"}
               width={60}
               height={60}
               alt={data?.isPlaying ? data?.album : "mijuki"}
@@ -82,7 +78,7 @@ function Repo({ initialData }) {
                   : { width: "0%" }
               }
             ></div>
-            <p id="activeicon" class="material-icons">
+            <p id="activeicon" className="material-icons">
               {data?.isPlaying
                 ? DEVICES_ICON[AVAILABLE_DEVICES.indexOf(data.device_type)]
                 : ""}

@@ -9,21 +9,25 @@ const API = "/api/spotify";
 
 const useAvgColor = () => {
   const { data } = useSWR(API, fetcher, {
-    refreshInterval: 1,
+    refreshInterval: 1000,
   });
 
   useEffect(() => {
-    fac
-      .getColorAsync(data?.albumImageUrl)
-      .then((color) => {
-        document.documentElement.style.setProperty(
-          "--primary-color",
-          color.hex
-        );
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    if (data?.isPlaying) {
+      fac
+        .getColorAsync(data?.albumImageUrl)
+        .then((color) => {
+          document.documentElement.style.setProperty(
+            "--primary-color",
+            color.hex
+          );
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    } else {
+      document.documentElement.style.setProperty("--primary-color", "#ffffff");
+    }
   }, [data]);
 };
 

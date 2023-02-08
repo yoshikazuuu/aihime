@@ -19,11 +19,14 @@ export default function Random() {
         />
       </Head>
       <div>
-        <style dangerouslySetInnerHTML={{ __html: "\n* {\n  padding: 0;\n  margin: 0;\n}\n.fit {\n  max-width: 100%;\n  max-height: 100%;\n}\n.center {\n  display: block;\n  margin: auto;\n}\n" }} />
-        <button onClick="window.location.href=window.location.href">Refresh Page</button>
+        <style
+          dangerouslySetInnerHTML={{
+            __html:
+              "\n* {\n  padding: 0;\n  margin: 0;\n}\n.fit {\n  max-width: 100%;\n  max-height: 100%;\n}\n.center {\n  display: block;\n  margin: auto;\n}\n",
+          }}
+        />
         <RandomLinks num={1} />
       </div>
-
     </>
   );
 }

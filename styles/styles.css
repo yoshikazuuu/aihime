@@ -3,20 +3,26 @@
 }
 
 html {
-  /* position: fixed; */
   overflow-x: hidden;
 }
 
 body {
-  background: radial-gradient(circle, rgba(221, 221, 220) 0%, var(--primary-color) 100%);
   font-family: 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--primary-color);
+  background-image: radial-gradient(circle, rgb(221, 221, 220) 0%, rgba(0, 0, 0, 0) 100%);
+  transition: background-color 1s ease;
 }
 
 canvas {
   writing-mode: vertical-lr;
+}
+
+.canvas-container {
   position: fixed;
+  margin-top: -10px;
+
 }
 
 #c {
@@ -119,8 +125,24 @@ span .fa {
   }
 }
 
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
 .fade-in {
   animation: fadeIn 1s ease-in-out;
+}
+
+.fade-out {
+  animation: fadeOut 1s ease-in-out;
 }
 
 .tooltip {
@@ -279,4 +301,11 @@ p {
   float: left;
   vertical-align: middle;
   font-size: 1.3em;
+}
+
+#div-album {
+  border: solid;
+  display: contents;
+  margin-top: 20px;
+  position: relative;
 }
