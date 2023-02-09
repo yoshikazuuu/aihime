@@ -295,7 +295,7 @@ p {
   float: left;
 }
 
-.material-icons {
+#activeicon {
   margin-top: 5px;
   margin-right: 5px;
   float: left;
