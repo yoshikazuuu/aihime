@@ -15,11 +15,11 @@ async function getAnswer(lyric) {
       {
         role: "system",
         content:
-          "You are a philosopher that makes a quote from a whole song—interpreting the complete lyrics into a single sentence (max 20 words), yet sounding so wise. Always turn the lyrics into English.",
+          'You are a philosopher that makes a quote from a whole song—interpreting the complete lyrics into a single sentence (max 20 words), yet sounding so wise. Don\'t forget to add " (double quote) " Always turn the lyrics into English.',
       },
       {
         role: "user",
-        content: `in 20 words or less make it a quote ${lyric}`,
+        content: `in 20 words or less make it a quote from this lyrics "${lyric}"`,
       },
     ],
   });
