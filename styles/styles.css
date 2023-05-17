@@ -309,3 +309,22 @@ p {
   margin-top: 20px;
   position: relative;
 }
+
+.quote-header {
+  color: #666;
+  font-weight: 300;
+}
+
+.quote-body {
+  color: black;
+  font-weight: bold;
+  font-style: italic;
+
+}
+
+.quote-container {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

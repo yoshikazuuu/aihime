@@ -125,18 +125,32 @@
 
 // Code above is the refactored version of this bottom code (lots of bug)
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import useSWR from "swr";
 
 const useWordCloud = () => {
   const fetcher = (url) => fetch(url).then((r) => r.json());
-  const { data } = useSWR("/api/lyrics", fetcher, {
-    refreshInterval: 1000,
-    refreshWhenHidden: false,
-    revalidateOnFocus: true,
-  });
+  const previousSongRef = useRef(null);
+  const [lyricsData, setLyricsData] = useState(null);
+  const [lyricsQuote, setLyricsQuote] = useState(null);
+  const { data: spotifyData } = useSWR("/api/spotify", fetcher);
 
   useEffect(() => {
+    if (spotifyData?.songUrl !== previousSongRef.current) {
+      previousSongRef.current = spotifyData?.songUrl;
+      fetch("/api/lyrics")
+        .then((r) => r.json())
+        .then(setLyricsData);
+
+      fetch("/api/gpt")
+        .then((r) => r.json())
+        .then(setLyricsQuote);
+    }
+  }, [spotifyData]);
+
+  useEffect(() => {
+    if (!lyricsData) return;
+
     var canvasContainer = document.querySelector(".canvas-container");
     canvasContainer.classList.add("fade-out");
 
@@ -148,8 +162,8 @@ const useWordCloud = () => {
       canvasContainer.classList.remove("fade-out");
       canvasContainer.classList.remove("fade-out");
 
-      if (!data) return;
-      var lyric = data.lyric;
+      if (!lyricsData) return;
+      var lyric = lyricsData.lyric;
       var words = {};
       var words_attr = [];
       string_handle(lyric);
@@ -241,7 +255,9 @@ const useWordCloud = () => {
         return words;
       }
     }, 1000);
-  }, [data]);
+  }, [lyricsData]);
+
+  return { spotifyData, lyricsQuote };
 };
 
 export default useWordCloud;

@@ -1,21 +1,12 @@
-// import { getAverageColor } from "fast-average-color-node";
-import useSWR from "swr";
 import { useEffect } from "react";
 const FastAverageColor = require("fast-average-color").FastAverageColor;
 const fac = new FastAverageColor();
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
-const API = "/api/spotify";
-
-const useAvgColor = () => {
-  const { data } = useSWR(API, fetcher, {
-    refreshInterval: 1000,
-  });
-
+const useAvgColor = (spotifyData) => {
   useEffect(() => {
-    if (data?.isPlaying) {
+    if (spotifyData?.isPlaying) {
       fac
-        .getColorAsync(data?.albumImageUrl)
+        .getColorAsync(spotifyData?.albumImageUrl)
         .then((color) => {
           document.documentElement.style.setProperty(
             "--primary-color",
@@ -28,7 +19,7 @@ const useAvgColor = () => {
     } else {
       document.documentElement.style.setProperty("--primary-color", "#ffffff");
     }
-  }, [data]);
+  }, [spotifyData]);
 };
 
 export default useAvgColor;

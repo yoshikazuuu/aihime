@@ -30,16 +30,13 @@ async function getAnswer(lyric) {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (_, res) => {
   const { data } = await axios.get(LYRICS_API);
-  const quoteAPI = await getAnswer(data.lyric);
-
-  if (quoteAPI.data.choices[0].message.content === null) {
+  if (data.lyric === "") {
     return res.status(200).json({
       quote: "No lyrics found.",
     });
   }
 
-  const isPlaying = data.isPlaying;
-
+  const quoteAPI = await getAnswer(data.lyric);
   return res.status(200).json({
     quote: quoteAPI.data.choices[0].message.content,
   });

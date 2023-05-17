@@ -7,8 +7,9 @@ import Album from "@/components/song";
 import CopyLink from "../components/functions";
 
 export default function About() {
-  useAvgColor();
-  useWordCloud();
+  const { spotifyData } = useWordCloud();
+  useAvgColor(spotifyData);
+
   return (
     <>
       <Head>

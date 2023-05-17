@@ -5,10 +5,11 @@ import Album from "@/components/song";
 import Quote from "@/components/quote";
 import useWordCloud from "@/components/text";
 import useAvgColor from "@/components/bgcolor";
+import CenteredQuote from "@/components/quote";
 
 export default function Home() {
-  useAvgColor();
-  useWordCloud();
+  const { spotifyData, lyricsQuote } = useWordCloud();
+  useAvgColor(spotifyData);
   return (
     <>
       <Head>
@@ -29,17 +30,17 @@ export default function Home() {
         <div className="vertical-heading-2 center fade-in">
           <a style={{ fontSize: "5rem" }}>生きろ。</a>
         </div>
-
-        <Quote />
-
-        <span>
-          <Link style={{ lineHeight: "30px" }} href="/about">
-            About
-          </Link>
-          <br />
-          Made with ❤️ for You 🎀
-        </span>
       </div>
+
+      <CenteredQuote quote={lyricsQuote?.quote} />
+
+      <span>
+        <Link style={{ lineHeight: "30px" }} href="/about">
+          About
+        </Link>
+        <br />
+        Made with ❤️ for You 🎀
+      </span>
       <Album />
     </>
   );

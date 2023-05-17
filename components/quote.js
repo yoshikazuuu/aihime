@@ -1,34 +1,14 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import useSWR, { SWRConfig } from "swr";
+import React from "react";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
-const QUOTE_API = "/api/gpt";
-
-function Quote({ initialData }) {
-  const { data } = useSWR(QUOTE_API, fetcher, {
-    initialData,
-    refreshInterval: 1000,
-  });
-
+function CenteredQuote({ quote }) {
   return (
-    <div>
-      <p>{data?.quote}</p>
+    <div className="quote-container">
+      <div className="quote-header" style={{ textAlign: "center" }}>
+        Quote generated from the lyric: <br />
+        <p className="quote-body">{quote}</p>
+      </div>
     </div>
   );
 }
 
-export default function App({ initialData }) {
-  return (
-    <SWRConfig value={{ fetcher }}>
-      <Quote initialData={initialData} />
-    </SWRConfig>
-  );
-}
-
-export async function getServerSideProps() {
-  const res = await fetch(API);
-  const json = await res.json();
-
-  return { props: { initialData: json } };
-}
+export default CenteredQuote;
