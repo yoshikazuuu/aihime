@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import Album from "@/components/song";
+import Quote from "@/components/quote";
 import useWordCloud from "@/components/text";
 import useAvgColor from "@/components/bgcolor";
 
@@ -28,6 +29,8 @@ export default function Home() {
         <div className="vertical-heading-2 center fade-in">
           <a style={{ fontSize: "5rem" }}>生きろ。</a>
         </div>
+
+        <Quote />
 
         <span>
           <Link style={{ lineHeight: "30px" }} href="/about">
