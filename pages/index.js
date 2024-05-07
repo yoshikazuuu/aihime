@@ -32,7 +32,7 @@ export default function Home() {
         </div>
       </div>
 
-      <CenteredQuote quote={lyricsQuote?.quote} />
+      {/* <CenteredQuote quote={lyricsQuote?.quote} /> */}
 
       <span>
         <Link style={{ lineHeight: "30px" }} href="/about">
